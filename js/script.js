@@ -3,6 +3,9 @@ let  buttonRock,
     buttonScissors,
     argButtonName;
 
+    playerScore = 0;
+    computerScore = 0;
+
 buttonRock = document.getElementById('button-rock');
 buttonPaper = document.getElementById('button-paper');
 buttonScissors = document.getElementById('button-scissors');
@@ -10,9 +13,6 @@ buttonScissors = document.getElementById('button-scissors');
 function buttonClicked(argButtonName) {
   clearMessages();
   console.log(argButtonName + ' został kliknięty');
-
-playerScore = 0;
-computerScore = 0;
 
 let  computerMove,
     playerMove,
@@ -40,19 +40,19 @@ function displayResult(argPlayerMove, argComputerMove) {
     (argPlayerMove == 'kamien' && argComputerMove == 'nozyczki') ||
     (argPlayerMove == 'nozyczki' && argComputerMove == 'papier')
   ) {
-    playerScore += 1;
+    playerScore++
     printMessage('Wygrywasz!');
   } else if (argPlayerMove == argComputerMove) {
     printMessage('remis');
   } else {
-    computerScore += 1;
+    computerScore++
     printMessage('Przegrywasz :(');
   }
   printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
   printMessage('Punktacja' + playerScore + ':' + computerScore)
 }
 playerMove = argButtonName;
-console.log('wybór ruchu gracza to: ' + playerInput);
+console.log('wybór ruchu gracza to: ' + playerMove);
 playerMove = argButtonName;
 console.log('ruch gracza to: ' + playerMove);
 randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -65,6 +65,3 @@ displayResult(playerMove, computerMove);
 buttonRock.addEventListener('click', function(){ buttonClicked('kamien'); });
 buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
 buttonScissors.addEventListener('click', function(){ buttonClicked('nozyczki'); });
-
-displayResult(playerMove, computerMove);
-console.log
